@@ -1,0 +1,24 @@
+{
+  "name": "git-log-graph",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Beautiful, colorful ASCII git log graph — better than git log --graph",
+  "bin": {
+    "git-log-graph": "./index.js",
+    "glg": "./index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "developer-tools",
+    "cli",
+    "nodejs",
+    "zero-dependencies",
+    "git",
+    "log",
+    "graph",
+    "visualization"
+  ],
+  "license": "MIT"
+}
