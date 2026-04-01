@@ -1,3 +1,5 @@
+![Banner](banner.svg)
+
 # git-log-graph
 
 Beautiful, colorful ASCII git log graph — better than `git log --graph`.
