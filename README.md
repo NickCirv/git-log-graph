@@ -1,110 +1,57 @@
-![Banner](banner.svg)
+<div align="center">
 
 # git-log-graph
 
-Beautiful, colorful ASCII git log graph — better than `git log --graph`.
+**Colorful ASCII branch graph for `git log` — with author initials, relative dates, and a built-in pager**
 
-```
-  git-log-graph  my-repo  main
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue?labelColor=0B0A09)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen?labelColor=0B0A09)](package.json)
+[![Zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen?labelColor=0B0A09)](package.json)
 
-  ● 3f4a1c2 2h ago  [JD] feat: add dark mode toggle
-  │ ● 9b2e8f1 3d ago  [AB] fix: resolve race condition in auth
-  ├─╯
-  ● 71c4d90 1w ago  [JD] chore: update dependencies
-  ● a2b8e33 2w ago  [MC] feat: initial schema validation
-```
-
-Zero external dependencies. Pure Node.js built-ins only.
+</div>
 
 ## Install
 
-```sh
-npm install -g git-log-graph
+```bash
+npx github:NickCirv/git-log-graph
 ```
 
-Or run directly with npx:
+Or install globally:
 
-```sh
-npx git-log-graph
+```bash
+npm install -g github:NickCirv/git-log-graph
 ```
 
 ## Usage
 
-```sh
+```bash
 git-log-graph [options]
 glg [options]          # short alias
 ```
 
-### Options
+| Flag | Description |
+|------|-------------|
+| `--count <n>` | Limit commits shown (default: 100) |
+| `--all` | Show all branches |
+| `--author <name>` | Filter by author name |
+| `--since <date>` | Filter by date, e.g. `"2 weeks ago"` |
+| `--search <text>` | Filter commits by message |
+| `--stat` | Show files changed per commit |
+| `--compact` | One-line-per-commit mode |
+| `--help, -h` | Show help |
 
-| Flag | Description | Default |
-|------|-------------|---------|
-| `--count <n>` | Limit commits shown | 100 |
-| `--all` | Show all branches | current branch |
-| `--author <name>` | Filter by author name | — |
-| `--since <date>` | Filter by date, e.g. `"2 weeks ago"` | — |
-| `--search <text>` | Filter commits by message | — |
-| `--stat` | Show files changed per commit | off |
-| `--compact` | One-line-per-commit mode | off |
-| `--help, -h` | Show help | — |
+**Examples:**
 
-### Examples
-
-```sh
-# Show last 50 commits
-git-log-graph --count 50
-
-# Show all branches
-git-log-graph --all
-
-# Filter by author
-git-log-graph --author "Jane Doe"
-
-# Commits from the last week
-git-log-graph --since "1 week ago"
-
-# Search commit messages
-git-log-graph --search "feat"
-
-# Show file stats per commit
-git-log-graph --stat
-
-# Compact one-line mode
-git-log-graph --compact
-
-# Combine filters
-git-log-graph --all --author "Jane" --since "2 weeks ago"
+```bash
+glg --all --author "Jane" --since "2 weeks ago"
+glg --search "feat" --stat
+glg --compact --count 50
 ```
 
-## Features
+## What it does
 
-- **Colored branch lanes** — each active branch gets a distinct ANSI color
-- **Author initials** — `[JD]` for Jane Doe, color-coded per author
-- **Relative dates** — `2h ago`, `3d ago`, `2w ago`, `4mo ago`
-- **Merge connectors** — `╮` / `╯` lines show merge points visually
-- **Smart pager** — auto-paginates long output (j/k/q controls)
-- **Compact mode** — one line per commit for dense overviews
-- **Stat mode** — files changed per commit inline
+Runs `git log` and renders your branch history as a colored ASCII graph — each active branch gets its own ANSI lane color, commits show author initials (`[JD]`) color-coded per contributor, and dates display as human-friendly relative values (`2h ago`, `3d ago`). Merge points are connected with `╮`/`╯` line-drawing characters. When output exceeds the terminal height, a built-in pager activates (j/k to scroll, q to quit).
 
-## Pager Controls
+---
 
-When output exceeds terminal height, the built-in pager activates:
-
-| Key | Action |
-|-----|--------|
-| `j` / `↓` | Scroll down |
-| `k` / `↑` | Scroll up |
-| `Space` / `PgDn` | Page down |
-| `PgUp` | Page up |
-| `g` | Jump to top |
-| `G` | Jump to bottom |
-| `q` | Quit |
-
-## Requirements
-
-- Node.js 18+
-- Git installed and in PATH
-
-## License
-
-MIT
+<sub>Zero dependencies · Node 18+ · MIT · by <a href="https://github.com/NickCirv">NickCirv</a></sub>
